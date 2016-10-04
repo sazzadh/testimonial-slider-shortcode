@@ -52,7 +52,7 @@ function testiSliderShort_shortcode( $atts, $content = null ) {
     
     <div class="tss_testimonial_slider dots_<?php echo $dots; ?>">
         <div class="owl-carousel <?php echo $uid; ?>">
-            <?php echo imgcarsho_content_helper($content, true, true); ?>
+            <?php echo testiSliderShort_content_helper($content, true, true); ?>
         </div>
     </div>
     
