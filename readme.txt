@@ -1,7 +1,7 @@
-=== Image Carousel Shortcode ===
+=== Testimonial Slider Shortcode ===
 Contributors: sazzadh
 Donate link: http://tallythemes.com/
-Tags: carousel, image, shortcode, owl carousel, carousel shortcode, owl carousel shortcode
+Tags: testimonial slider shortcode, shortcode, owl carousel, owl carousel, testimonial, slideshowshortcode
 Requires at least: 4
 Tested up to: 4.6
 Stable tag: 1.0
