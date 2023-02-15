@@ -72,3 +72,11 @@
 .tss_testimonial_slider .owl-theme .owl-dots .owl-dot:hover span {
     background: #869791;
 }
+
+.tss_testimonial_slider .tss_item a{
+	color:inherit;
+	text-decoration:none;
+}
+.tss_testimonial_slider .tss_item a:hover{
+	text-decoration:underline;
+}

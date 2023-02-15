@@ -1,14 +1,14 @@
 <?php
 /**
  * @package testimonial-slider-shortcode
- * @version 1.0
+ * @version 1.1.7
  */
 /*
 Plugin Name: Testimonial Slider Shortcode
 Plugin URI: http://wordpress.org/plugins/testimonial-slider-shortcode/
 Description: <strong>Testimonial Slider Shortcode</strong> is a lightweight Testimonial Slideshow plugin for WordPress. It lets you create a beautiful responsive Testimonial Slideshow.
 Author: Sazzad Hu
-Version: 1.0
+Version: 1.1.7
 Author URI: http://sazzadh.com/
 
 Prefix: TESTISLIDERSHORT
@@ -37,6 +37,9 @@ function testiSliderShort_shortcode( $atts, $content = null ) {
 		'dots' => '1',
 		'nav' => '1',
 		'class' => '',
+		'align' => 'center',
+		'width' => '',
+		'padding' => '',
     ), $atts );
 	
 	$output = '';
@@ -48,10 +51,13 @@ function testiSliderShort_shortcode( $atts, $content = null ) {
 	$dots = ( $settings['dots'] == '1' ) ? 'true' :'false';
 	$nav = ( $settings['nav'] == '1' ) ? 'true' :'false';
 	$class = $settings['class'];
+	$align = ( $settings['align'] != '' ) ? 'text-align:'.$settings['align'].'; ' :'';
+	$width = ( $settings['width'] != '' ) ? 'max-width:'.$settings['width'].'px; ' :'';
+	$padding = ( $settings['padding'] != '' ) ? 'padding:'.$settings['padding'].'; ' :'';
 	?>
     
-    <div class="tss_testimonial_slider dots_<?php echo $dots; ?>">
-        <div class="owl-carousel <?php echo $uid; ?>">
+    <div class="tss_testimonial_slider dots_<?php echo $dots; ?>" style=" <?php echo $width.$align; ?>">
+        <div class="owl-carousel <?php echo $uid; ?>" style=" <?php echo $padding; ?>">
             <?php echo testiSliderShort_content_helper($content, true, true); ?>
         </div>
     </div>
