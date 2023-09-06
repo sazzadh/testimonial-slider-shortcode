@@ -51,24 +51,24 @@ function testiSliderShort_shortcode( $atts, $content = null ) {
 	$dots = ( $settings['dots'] == '1' ) ? 'true' :'false';
 	$nav = ( $settings['nav'] == '1' ) ? 'true' :'false';
 	$class = $settings['class'];
-	$align = ( $settings['align'] != '' ) ? 'text-align:'.$settings['align'].'; ' :'';
-	$width = ( $settings['width'] != '' ) ? 'max-width:'.$settings['width'].'px; ' :'';
-	$padding = ( $settings['padding'] != '' ) ? 'padding:'.$settings['padding'].'; ' :'';
+	$align = ( $settings['align'] != '' ) ? $settings['align'] : "";
+	$width = ( $settings['width'] != '' ) ? $settings['width'] : "";
+	$padding = ( $settings['padding'] != '' ) ? $settings['padding'] : "";
 	?>
     
-    <div class="tss_testimonial_slider dots_<?php echo $dots; ?>" style=" <?php echo $width.$align; ?>">
-        <div class="owl-carousel <?php echo $uid; ?>" style=" <?php echo $padding; ?>">
-            <?php echo testiSliderShort_content_helper($content, true, true); ?>
+    <div class="tss_testimonial_slider dots_<?php echo esc_attr($dots); ?>" style="text-align:<?php echo esc_attr($align); ?>; max-width:<?php echo esc_attr($width); ?>px; padding:<?php echo esc_attr($padding); ?>;">
+        <div class="owl-carousel <?php echo esc_attr($uid); ?>" style="padding:<?php echo esc_attr($padding); ?>;">
+            <?php echo wp_kses_post(testiSliderShort_content_helper($content, true, true)); ?>
         </div>
     </div>
     
     <script type="text/javascript">
 		jQuery(document).ready(function($){
 			$(".<?php echo $uid; ?>").owlCarousel({
-				loop	: <?php echo $loop; ?>,
-				dots	: <?php echo $dots; ?>,
-				nav	: <?php echo $nav; ?>,
-				autoplay: <?php echo $autoplay; ?>,
+				loop	: <?php echo esc_attr($loop); ?>,
+				dots	: <?php echo esc_attr($dots); ?>,
+				nav	: <?php echo esc_attr($nav); ?>,
+				autoplay: <?php echo esc_attr($autoplay); ?>,
 				margin: 0,
 				responsive:{
 					0:{
@@ -99,17 +99,20 @@ function testiSliderShort_item_shortcode( $atts, $content = null ) {
 		'link' => '',
 		'target' => '_self', //_blank, _self
     ), $atts );
-	
-	$link_start = '';
-	$link_end = '';
-	
-	if( $settings['link'] != '' ){ $link_start = '<a href="'.$settings['link'].'" target="'.$settings['target'].'">'; $link_end = '</a>'; }
-	
+
 	ob_start();
 		echo '<div class="tss_item">';
 			echo '<div class="tss_item_in">';
-				echo '<p>'.$settings['text'].'</p>';
-				echo '<strong>'.$link_start.$settings['name'].$link_end.'</strong>';
+				echo '<p>'.esc_attr($settings['text']).'</p>';
+				echo '<strong>';
+					if( $settings['link'] != '' ){
+						echo '<a href="'.esc_attr($settings['link']).'" target="'.esc_attr($settings['target']).'">';
+					}
+						echo esc_attr($settings['name']);
+					if( $settings['link'] != '' ){
+						echo '</a>';
+					}
+				echo '</strong>';
 			echo '</div>';
 		echo '</div>';
 	$output = ob_get_contents();
