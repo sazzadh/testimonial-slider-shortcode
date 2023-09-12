@@ -1,14 +1,14 @@
 <?php
 /**
  * @package testimonial-slider-shortcode
- * @version 1.1.8
+ * @version 1.1.9
  */
 /*
 Plugin Name: Testimonial Slider Shortcode
 Plugin URI: http://wordpress.org/plugins/testimonial-slider-shortcode/
 Description: <strong>Testimonial Slider Shortcode</strong> is a lightweight Testimonial Slideshow plugin for WordPress. It lets you create a beautiful responsive Testimonial Slideshow.
 Author: Sazzad Hu
-Version: 1.1.8
+Version: 1.1.9
 Author URI: http://sazzadh.com/
 
 Prefix: TESTISLIDERSHORT
