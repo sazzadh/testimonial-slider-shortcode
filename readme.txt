@@ -5,8 +5,8 @@ Tags: testimonial slider shortcode, shortcode, owl carousel, owl carousel,
 
 testimonial, slideshow shortcode
 Requires at least: 4
-Tested up to: 6.1.1
-Stable tag: 1.1.8
+Tested up to: 6.3.1
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ Below is the example of the shoercode.
 
 
 == Changelog ==
+= 1.1.9 =
+* Fixed Cross-Site Scripting attacks
+
 = 1.1.8 =
 * Tested at latest wordpress
 
