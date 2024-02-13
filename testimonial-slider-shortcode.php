@@ -23,9 +23,9 @@ define('TESTISLIDERSHORT_DRI', $path_dir);
 
 add_action('wp_enqueue_scripts', 'testiSliderShort_script_loader');
 function testiSliderShort_script_loader(){
-	wp_enqueue_style('owl-carousel', TESTISLIDERSHORT_URL.'css/owl.carousel.css');
-	wp_enqueue_style('testimonial-slider-shortcode', TESTISLIDERSHORT_URL.'css/testimonial-slider-shortcode.css');
-	wp_enqueue_script('owl-carousel', TESTISLIDERSHORT_URL.'js/owl.carousel.min.js' , array('jquery'), '', true);
+	wp_register_style('owl-carousel', TESTISLIDERSHORT_URL.'css/owl.carousel.css');
+	wp_register_style('testimonial-slider-shortcode', TESTISLIDERSHORT_URL.'css/testimonial-slider-shortcode.css');
+	wp_register_script('owl-carousel', TESTISLIDERSHORT_URL.'js/owl.carousel.min.js' , array('jquery'), '', true);
 }
 
 
@@ -43,7 +43,10 @@ function testiSliderShort_shortcode( $atts, $content = null ) {
     ), $atts );
 	
 	$output = '';
-	
+	wp_enqueue_style('owl-carousel');
+	wp_enqueue_style('testimonial-slider-shortcode');
+	wp_enqueue_script('owl-carousel');
+
 	ob_start();
 	$uid = 'tss_testimonial_slider_'.rand();
 	$loop = ( $settings['loop'] == '1' ) ? 'true' :'false';
@@ -54,6 +57,8 @@ function testiSliderShort_shortcode( $atts, $content = null ) {
 	$align = ( $settings['align'] != '' ) ? $settings['align'] : "";
 	$width = ( $settings['width'] != '' ) ? $settings['width'] : "";
 	$padding = ( $settings['padding'] != '' ) ? $settings['padding'] : "";
+
+
 	?>
     
     <div class="tss_testimonial_slider dots_<?php echo esc_attr($dots); ?>" style="text-align:<?php echo esc_attr($align); ?>; max-width:<?php echo esc_attr($width); ?>px; padding:<?php echo esc_attr($padding); ?>;">
